@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CiberHub — Marketplace de ciberseguridad para PYMEs</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#0B1220;
+  --surface:#121A2B;
+  --surface-2:#182338;
+  --line:#233047;
+  --teal:#4FD1C5;
+  --teal-dim:#2E5F5A;
+  --amber:#F2B84B;
+  --text:#E7ECF5;
+  --muted:#8593AC;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  line-height:1.5;
+}
+
+h1,h2,h3,.brand{
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.mono{
+  font-family:'IBM Plex Mono',monospace;
+}
+
+a{
+  color:inherit;
+}
+
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(11,18,32,0.9);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 24px;
+  max-width:1120px;
+  margin:0 auto;
+}
+
+.brand{
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:0.2px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.brand-mark{
+  width:10px;
+  height:10px;
+  border-radius:2px;
+  background:var(--teal);
+  box-shadow:0 0 10px var(--teal);
+}
+
+.navlinks{
+  display:flex;
+  gap:28px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.navlinks a:hover{
+  color:var(--text);
+}
+
+.cart-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  padding:8px 14px;
+  border-radius:8px;
+  font-size:14px;
+  cursor:pointer;
+  color:var(--text);
+}
+
+#cart-count{
+  background:var(--teal);
+  color:#04211E;
+  font-weight:700;
+  border-radius:999px;
+  padding:1px 7px;
+  font-size:12px;
+  min-width:18px;
+  text-align:center;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+  padding:72px 24px 56px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:48px;
+  align-items:center;
+  max-width:1120px;
+  margin:0 auto;
+}
+
+.eyebrow-line{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal);
+  font-size:13px;
+  font-family:'IBM Plex Mono',monospace;
+  margin-bottom:18px;
+}
+
+.pulse{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--teal);
+  position:relative;
+  flex:none;
+}
+
+.pulse::after{
+  content:'';
+  position:absolute;
+  inset:-5px;
+  border-radius:50%;
+  border:1px solid var(--teal);
+  animation:ping 2.2s ease-out infinite;
+}
+
+@keyframes ping{
+  0%{
+    transform:scale(0.6);
+    opacity:0.9;
+  }
+
+  100%{
+    transform:scale(2.4);
+    opacity:0;
+  }
+}
+
+.hero h1{
+  font-size:42px;
+  line-height:1.15;
+  margin:0 0 18px;
+  font-weight:700;
+}
+
+.hero p.lead{
+  color:var(--muted);
+  font-size:17px;
+  max-width:46ch;
+  margin:0 0 28px;
+}
+
+.hero-ctas{
+  display:flex;
+  gap:12px;
+}
+
+.btn-primary{
+  background:var(--teal);
+  color:#04211E;
+  border:none;
+  font-weight:600;
+  padding:13px 22px;
+  border-radius:8px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.btn-ghost{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:13px 22px;
+  border-radius:8px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+
+/* =========================================
+   TERMINAL
+   MANTENIDO COMO EL ORIGINAL
+========================================= */
+
+.terminal{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+}
+
+.terminal-bar{
+  display:flex;
+  gap:6px;
+  padding:10px 14px;
+  border-bottom:1px solid var(--line);
+  background:var(--surface-2);
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#2C3A54;
+}
+
+.terminal-body{
+  padding:18px 18px 20px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.terminal-body .ok{
+  color:var(--teal);
+}
+
+.terminal-body .line{
+  margin:0 0 8px;
+  white-space:pre-wrap;
+}
+
+.caret{
+  display:inline-block;
+  width:7px;
+  height:14px;
+  background:var(--teal);
+  vertical-align:middle;
+  animation:blink 1s steps(1) infinite;
+}
+
+@keyframes blink{
+  50%{
+    opacity:0;
+  }
+}
+
+
+/* =========================================
+   CATEGORÍAS
+========================================= */
+
+.cats{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+}
+
+.cats-row{
+  display:flex;
+  gap:8px;
+  padding:14px 24px;
+  max-width:1120px;
+  margin:0 auto;
+  overflow-x:auto;
+}
+
+.cat-btn{
+  flex:none;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  color:var(--muted);
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13.5px;
+  cursor:pointer;
+}
+
+.cat-btn.active{
+  background:var(--teal-dim);
+  border-color:var(--teal);
+  color:var(--text);
+}
+
+
+/* =========================================
+   CATÁLOGO
+========================================= */
+
+.section{
+  padding:56px 24px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:20px;
+  max-width:1120px;
+  margin-left:auto;
+  margin-right:auto;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.section-head h2{
+  font-size:24px;
+  margin:0;
+}
+
+.section-head span{
+  color:var(--muted);
+  font-size:14px;
+}
+
+
+/* =========================================
+   BUSCADOR + ORDENAMIENTO
+========================================= */
+
+.toolbar{
+  max-width:1120px;
+  margin:0 auto 24px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.search-box{
+  flex:1;
+  min-width:220px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 14px;
+}
+
+.search-box input{
+  background:transparent;
+  border:none;
+  outline:none;
+  color:var(--text);
+  font-size:14px;
+  width:100%;
+  font-family:'Inter',sans-serif;
+}
+
+.search-box input::placeholder{
+  color:var(--muted);
+}
+
+.search-icon{
+  width:16px;
+  height:16px;
+  flex:none;
+  opacity:0.7;
+}
+
+.sort-select{
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--text);
+  border-radius:8px;
+  padding:10px 14px;
+  font-size:13.5px;
+  font-family:'Inter',sans-serif;
+  cursor:pointer;
+}
+
+
+/* =========================================
+   ESTADO VACÍO
+========================================= */
+
+.empty-state{
+  max-width:1120px;
+  margin:0 auto;
+  text-align:center;
+  padding:56px 20px;
+  color:var(--muted);
+  border:1px dashed var(--line);
+  border-radius:10px;
+}
+
+.empty-state strong{
+  display:block;
+  color:var(--text);
+  font-size:16px;
+  margin-bottom:6px;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+
+/* =========================================
+   TARJETAS
+========================================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:1120px;
+  margin:0 auto;
+}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.vendor{
+  font-size:12px;
+  color:var(--muted);
+  font-family:'IBM Plex Mono',monospace;
+  background:none;
+  border:none;
+  padding:0;
+  cursor:pointer;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-color:transparent;
+}
+
+.vendor:hover,
+.vendor:focus-visible{
+  color:var(--teal);
+  text-decoration-color:var(--teal);
+}
+
+.verified{
+  color:var(--teal);
+  font-size:11.5px;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.card h3{
+  font-size:17px;
+  margin:0;
+  font-weight:600;
+  line-height:1.35;
+}
+
+.card p{
+  font-size:13.5px;
+  color:var(--muted);
+  margin:0;
+  flex:1;
+}
+
+.card-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+}
+
+.price{
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--amber);
+  font-size:15px;
+  font-weight:500;
+}
+
+.price span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.add-btn{
+  background:transparent;
+  border:1px solid var(--teal);
+  color:var(--teal);
+  padding:7px 14px;
+  border-radius:7px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.add-btn:active{
+  transform:scale(0.97);
+}
+
+.add-btn.added{
+  background:var(--teal);
+  color:#04211E;
+  border-color:var(--teal);
+}
+
+
+/* =========================================
+   VIDEO
+========================================= */
+
+.video-section{
+  background:var(--surface);
+}
+
+.video-wrap{
+  max-width:900px;
+  margin:0 auto;
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+}
+
+.video-wrap iframe,
+.video-wrap video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+  background:#000;
+}
+
+.video-caption{
+  max-width:900px;
+  margin:16px auto 0;
+  color:var(--muted);
+  font-size:13.5px;
+  text-align:center;
+}
+
+
+/* =========================================
+   CONFIANZA
+========================================= */
+
+.trust{
+  background:var(--surface);
+  border-top:1px solid var(--line);
+  padding:36px 24px;
+}
+
+.trust-row{
+  max-width:1120px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:32px;
+  justify-content:space-between;
+  align-items:center;
+  color:var(--muted);
+  font-size:13.5px;
+}
+
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+  padding:40px 24px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.foot-row{
+  max-width:1120px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+
+/* =========================================
+   MODALES
+========================================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(4,8,16,0.65);
+  backdrop-filter:blur(2px);
+  display:none;
+  align-items:flex-start;
+  justify-content:flex-end;
+  z-index:100;
+}
+
+.modal-overlay.open{
+  display:flex;
+}
+
+.modal-overlay.center{
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-panel{
+  background:var(--surface);
+  border-left:1px solid var(--line);
+  width:100%;
+  max-width:420px;
+  height:100%;
+  overflow-y:auto;
+  padding:24px;
+  animation:slideIn 0.25s ease-out;
+}
+
+.modal-overlay.center .modal-panel{
+  border-left:none;
+  border:1px solid var(--line);
+  border-radius:12px;
+  height:auto;
+  max-height:90vh;
+  max-width:480px;
+  animation:popIn 0.2s ease-out;
+}
+
+@keyframes slideIn{
+
+  from{
+    transform:translateX(24px);
+    opacity:0;
+  }
+
+  to{
+    transform:translateX(0);
+    opacity:1;
+  }
+
+}
+
+@keyframes popIn{
+
+  from{
+    transform:scale(0.96);
+    opacity:0;
+  }
+
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.modal-head h3{
+  margin:0;
+  font-size:19px;
+}
+
+.modal-close{
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  color:var(--text);
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  line-height:1;
+}
+
+
+/* =========================================
+   CARRITO
+========================================= */
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-item-name{
+  font-size:13.5px;
+  font-weight:500;
+  margin:0 0 3px;
+}
+
+.cart-item-vendor{
+  font-size:11.5px;
+  color:var(--muted);
+  font-family:'IBM Plex Mono',monospace;
+}
+
+.cart-item-price{
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--amber);
+  font-size:13.5px;
+  white-space:nowrap;
+}
+
+.cart-remove{
+  background:none;
+  border:none;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:12px;
+  text-decoration:underline;
+  padding:0;
+  margin-top:6px;
+}
+
+.cart-remove:hover,
+.cart-remove:focus-visible{
+  color:#ff9999;
+}
+
+.cart-summary{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  font-size:13.5px;
+}
+
+.cart-summary-row{
+  display:flex;
+  justify-content:space-between;
+  padding:4px 0;
+  color:var(--muted);
+}
+
+.cart-summary-row.total{
+  color:var(--text);
+  font-weight:600;
+  font-size:16px;
+  padding-top:10px;
+  border-top:1px solid var(--line);
+  margin-top:6px;
+}
+
+.cart-empty{
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+  padding:40px 0;
+}
+
+
+/* =========================================
+   PERFIL PROVEEDOR
+========================================= */
+
+.vendor-rating{
+  color:var(--amber);
+  font-size:15px;
+  margin:4px 0 14px;
+}
+
+.vendor-stats{
+  display:flex;
+  gap:18px;
+  margin:14px 0;
+  font-size:13px;
+  color:var(--muted);
+  flex-wrap:wrap;
+}
+
+.vendor-stats b{
+  display:block;
+  color:var(--text);
+  font-size:17px;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+
+/* =========================================
+   FORMULARIO
+========================================= */
+
+.form-field{
+  margin-bottom:14px;
+}
+
+.form-field label{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+.form-field input,
+.form-field textarea{
+  width:100%;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:10px 12px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  resize:vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.sort-select:focus,
+.search-box:focus-within{
+  border-color:var(--teal);
+  box-shadow:0 0 0 2px rgba(79,209,197,0.15);
+  outline:none;
+}
+
+.form-success{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--teal-dim);
+  border:1px solid var(--teal);
+  color:var(--text);
+  padding:12px 14px;
+  border-radius:8px;
+  font-size:13.5px;
+  margin-top:6px;
+}
+
+
+/* =========================================
+   ACCESIBILIDAD
+========================================= */
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible{
+  outline:2px solid var(--teal);
+  outline-offset:2px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width:860px){
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+}
+
+@media (max-width:560px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero-ctas{
+    flex-direction:column;
+  }
+
+  .modal-panel{
+    max-width:100%;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  .pulse::after,
+  .caret{
+    animation:none;
+  }
+
+  .modal-panel{
+    animation:none;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+  <div class="nav">
+
+    <div class="brand">
+      <span class="brand-mark"></span>
+      CiberHub
+    </div>
+
+    <nav class="navlinks" aria-label="Navegación principal">
+
+      <a href="#catalogo">
+        Catálogo
+      </a>
+
+      <a href="#video">
+        Video
+      </a>
+
+      <a href="#confianza">
+        Cómo verificamos
+      </a>
+
+      <a href="#footer">
+        Para proveedores
+      </a>
+
+    </nav>
+
+    <button
+      class="cart-btn"
+      id="cart-btn"
+      type="button"
+      aria-label="Abrir carrito de compras"
+      title="Abrir carrito"
+    >
+
+      Carrito
+
+      <span
+        id="cart-count"
+        aria-live="polite"
+      >
+        0
+      </span>
+
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+  <div class="hero-grid">
+
+    <div>
+
+      <div class="eyebrow-line">
+
+        <span
+          class="pulse"
+          aria-hidden="true"
+        ></span>
+
+        Proveedores verificados activos: 14
+
+      </div>
+
+      <h1>
+        Servicios de ciberseguridad para tu PYME,
+        sin contratar un equipo de TI.
+      </h1>
+
+      <p class="lead">
+        Compara y contrata auditorías, monitoreo,
+        capacitación y protección de datos de
+        proveedores certificados en Panamá —
+        todo desde un mismo lugar, con pago local.
+      </p>
+
+      <div class="hero-ctas">
+
+        <button
+          class="btn-primary"
+          type="button"
+          aria-label="Explorar catálogo de servicios"
+          onclick="document.getElementById('catalogo').scrollIntoView()"
+        >
+          Explorar catálogo
+        </button>
+
+        <button
+          class="btn-ghost"
+          id="provider-btn"
+          type="button"
+          aria-label="Abrir formulario para registrarse como proveedor"
+        >
+          Soy proveedor
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- TERMINAL ORIGINAL -->
+
+    <div class="terminal">
+
+      <div class="terminal-bar">
+
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+
+      </div>
+
+      <div class="terminal-body">
+
+        <p class="line">
+          $ ciberhub verificar --pyme "Panadería Aguadulce"
+        </p>
+
+        <p class="line ok">
+          ✓ certificado_ssl ................ activo
+        </p>
+
+        <p class="line ok">
+          ✓ backup_automatico .............. configurado
+        </p>
+
+        <p
+          class="line"
+          style="color:var(--amber);"
+        >
+          △ capacitación_phishing .......... pendiente
+        </p>
+
+        <p class="line ok">
+          ✓ firewall_perimetral ............ activo
+        </p>
+
+        <p class="line">
+          3 de 4 controles cumplidos<span class="caret"></span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     CATEGORÍAS
+========================================= -->
+
+<div class="cats">
+
+  <div class="cats-row">
+
+    <button
+      class="cat-btn active"
+      data-cat="todos"
+      type="button"
+      aria-label="Mostrar todos los servicios"
+      aria-pressed="true"
+    >
+      Todos
+    </button>
+
+    <button
+      class="cat-btn"
+      data-cat="auditoria"
+      type="button"
+      aria-label="Mostrar servicios de auditoría"
+      aria-pressed="false"
+    >
+      Auditoría
+    </button>
+
+    <button
+      class="cat-btn"
+      data-cat="monitoreo"
+      type="button"
+      aria-label="Mostrar servicios de monitoreo"
+      aria-pressed="false"
+    >
+      Monitoreo
+    </button>
+
+    <button
+      class="cat-btn"
+      data-cat="capacitacion"
+      type="button"
+      aria-label="Mostrar servicios de capacitación"
+      aria-pressed="false"
+    >
+      Capacitación
+    </button>
+
+    <button
+      class="cat-btn"
+      data-cat="infraestructura"
+      type="button"
+      aria-label="Mostrar servicios de infraestructura"
+      aria-pressed="false"
+    >
+      Infraestructura
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     CATÁLOGO
+========================================= -->
+
+<section
+  class="section"
+  id="catalogo"
+>
+
+  <div class="section-head">
+
+    <h2>
+      Catálogo de servicios
+    </h2>
+
+    <span
+      id="results-count"
+      aria-live="polite"
+    >
+      6 servicios de 4 proveedores
+    </span>
+
+  </div>
+
+
+  <!-- BUSCADOR Y ORDEN -->
+
+  <div class="toolbar">
+
+    <div class="search-box">
+
+      <svg
+        class="search-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+
+        <circle
+          cx="11"
+          cy="11"
+          r="7"
+        ></circle>
+
+        <line
+          x1="21"
+          y1="21"
+          x2="16.65"
+          y2="16.65"
+        ></line>
+
+      </svg>
+
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Buscar servicio (ej. phishing, backup, SSL)..."
+        aria-label="Buscar servicios por palabra clave"
+      >
+
+    </div>
+
+
+    <select
+      class="sort-select"
+      id="sort-select"
+      aria-label="Ordenar servicios"
+    >
+
+      <option value="relevancia">
+        Relevancia
+      </option>
+
+      <option value="precio-asc">
+        Menor precio
+      </option>
+
+      <option value="precio-desc">
+        Mayor precio
+      </option>
+
+      <option value="calificacion">
+        Mejor calificado
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div
+    class="grid"
+    id="grid"
+    aria-live="polite"
+  ></div>
+
+
+  <div
+    class="empty-state"
+    id="empty-state"
+    style="display:none;"
+    role="status"
+  >
+
+    <strong>
+      No hay servicios en esta categoría todavía.
+    </strong>
+
+    Prueba con otra categoría o borra la búsqueda.
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     VIDEO
+========================================= -->
+
+<section
+  class="section video-section"
+  id="video"
+>
+
+  <div class="section-head">
+
+    <h2>
+      Cómo funciona CiberHub
+    </h2>
+
+    <span>
+      Video explicativo
+    </span>
+
+  </div>
+
+
+  <div class="video-wrap">
+
+    <iframe
+      src="https://www.youtube.com/embed/VIDEO_ID_AQUI"
+      title="Cómo funciona CiberHub"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+  </div>
+
+
+  <p class="video-caption">
+    Video de 1–2 minutos mostrando el catálogo,
+    el filtro por categoría y el flujo de agregar
+    un servicio al carrito.
+  </p>
+
+</section>
+
+
+<!-- =========================================
+     CONFIANZA
+========================================= -->
+
+<section
+  class="trust"
+  id="confianza"
+>
+
+  <div class="trust-row">
+
+    <div class="trust-item">
+      🛡️ Proveedores verificados manualmente
+    </div>
+
+    <div class="trust-item">
+      💳 Yappy · Tarjeta · Transferencia
+    </div>
+
+    <div class="trust-item">
+      🧾 Precios incluyen 7% ITBMS
+    </div>
+
+    <div class="trust-item">
+      📄 Contrato de servicio digital incluido
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer id="footer">
+
+  <div class="foot-row">
+
+    <div>
+      CiberHub — demo académica,
+      Trabajo Individual 3, Tienda Electrónica.
+    </div>
+
+    <div>
+      Universidad de Panamá ·
+      Centro Regional Universitario de Coclé
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================
+     MODAL CARRITO
+========================================= -->
+
+<div
+  class="modal-overlay"
+  id="cart-overlay"
+  aria-hidden="true"
+>
+
+  <div
+    class="modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cart-title"
+  >
+
+    <div class="modal-head">
+
+      <h3 id="cart-title">
+        Tu carrito
+      </h3>
+
+      <button
+        class="modal-close"
+        id="cart-close"
+        type="button"
+        aria-label="Cerrar carrito"
+        title="Cerrar carrito"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <div id="cart-body"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     MODAL PERFIL PROVEEDOR
+========================================= -->
+
+<div
+  class="modal-overlay center"
+  id="vendor-overlay"
+  aria-hidden="true"
+>
+
+  <div
+    class="modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="vendor-title"
+  >
+
+    <div class="modal-head">
+
+      <h3 id="vendor-title">
+        Proveedor
+      </h3>
+
+      <button
+        class="modal-close"
+        id="vendor-close"
+        type="button"
+        aria-label="Cerrar perfil de proveedor"
+        title="Cerrar perfil"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <div id="vendor-body"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================
+     MODAL SOY PROVEEDOR
+========================================= -->
+
+<div
+  class="modal-overlay center"
+  id="provider-overlay"
+  aria-hidden="true"
+>
+
+  <div
+    class="modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="provider-title"
+  >
+
+    <div class="modal-head">
+
+      <h3 id="provider-title">
+        Únete como proveedor
+      </h3>
+
+      <button
+        class="modal-close"
+        id="provider-close"
+        type="button"
+        aria-label="Cerrar formulario de proveedor"
+        title="Cerrar formulario"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <form id="provider-form">
+
+
+      <div class="form-field">
+
+        <label for="pf-name">
+          Nombre del negocio
+        </label>
+
+        <input
+          type="text"
+          id="pf-name"
+          name="nombre_negocio"
+          required
+          minlength="2"
+          autocomplete="organization"
+        >
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label for="pf-services">
+          Servicios que ofrece
+        </label>
+
+        <textarea
+          id="pf-services"
+          name="servicios"
+          rows="3"
+          required
+          minlength="3"
+          placeholder="Ej. auditorías, monitoreo, capacitación..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label for="pf-contact">
+          Correo o teléfono de contacto
+        </label>
+
+        <input
+          type="text"
+          id="pf-contact"
+          name="contacto"
+          required
+          minlength="3"
+          autocomplete="email"
+          placeholder="correo@ejemplo.com / 6000-0000"
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn-primary"
+        style="width:100%;"
+        aria-label="Enviar solicitud para ser proveedor"
+      >
+        Enviar solicitud
+      </button>
+
+
+      <div
+        class="form-success"
+        id="pf-success"
+        style="display:none;"
+        role="status"
+        aria-live="polite"
+      >
+        ✓ Solicitud enviada. Te contactaremos pronto.
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   PROVEEDORES
+========================================= */
+
+const vendors = {
+
+  "NovaShield":{
+    code:"SEC-014",
+    name:"NovaShield",
+    desc:"Especialistas en auditorías técnicas y protección de datos para pequeñas empresas en crecimiento.",
+    rating:4.8,
+    response:"< 2h",
+    count:2
+  },
+
+  "Coclé InfoSec":{
+    code:"SEC-002",
+    name:"Coclé InfoSec",
+    desc:"Equipo local enfocado en monitoreo continuo y cumplimiento normativo para PYMEs del interior.",
+    rating:4.6,
+    response:"< 4h",
+    count:2
+  },
+
+  "Aguadulce Digital":{
+    code:"SEC-021",
+    name:"Aguadulce Digital",
+    desc:"Capacitaciones prácticas de concientización en ciberseguridad para equipos pequeños.",
+    rating:4.9,
+    response:"< 1h",
+    count:1
+  },
+
+  "CertPanamá":{
+    code:"SEC-009",
+    name:"CertPanamá",
+    desc:"Hardening de sitios web y gestión de certificados para negocios que venden en línea.",
+    rating:4.7,
+    response:"< 3h",
+    count:1
+  }
+
+};
+
+
+/* =========================================
+   SERVICIOS
+========================================= */
+
+const services = [
+
+  {
+    vendorKey:"NovaShield",
+    cat:"auditoria",
+    name:"Auditoría de vulnerabilidades básica",
+    desc:"Escaneo de puertos, revisión de configuración de servidores y reporte priorizado de hallazgos.",
+    price:180,
+    unit:"pago único"
+  },
+
+  {
+    vendorKey:"Coclé InfoSec",
+    cat:"monitoreo",
+    name:"Monitoreo perimetral 24/7",
+    desc:"Alertas en tiempo real ante intentos de intrusión y accesos anómalos a tu red.",
+    price:65,
+    unit:"por mes"
+  },
+
+  {
+    vendorKey:"Aguadulce Digital",
+    cat:"capacitacion",
+    name:"Taller anti-phishing para tu equipo",
+    desc:"Sesión de 2 horas con simulacro de correo malicioso incluido, para hasta 15 empleados.",
+    price:95,
+    unit:"por sesión"
+  },
+
+  {
+    vendorKey:"CertPanamá",
+    cat:"infraestructura",
+    name:"Certificado SSL + hardening del sitio",
+    desc:"Instalación de certificado, configuración de cabeceras de seguridad y prueba de carga.",
+    price:120,
+    unit:"pago único"
+  },
+
+  {
+    vendorKey:"NovaShield",
+    cat:"infraestructura",
+    name:"Respaldo automático anti-ransomware",
+    desc:"Backups cifrados diarios con retención de 30 días y prueba de restauración mensual.",
+    price:55,
+    unit:"por mes"
+  },
+
+  {
+    vendorKey:"Coclé InfoSec",
+    cat:"auditoria",
+    name:"Revisión de cumplimiento de datos",
+    desc:"Checklist de manejo de datos de clientes conforme a buenas prácticas locales.",
+    price:150,
+    unit:"pago único"
+  }
+
+];
+
+
+services.forEach((service,index)=>{
+  service.id=index;
+});
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+const grid =
+  document.getElementById('grid');
+
+const emptyState =
+  document.getElementById('empty-state');
+
+const resultsCount =
+  document.getElementById('results-count');
+
+const cartCountEl =
+  document.getElementById('cart-count');
+
+const searchInput =
+  document.getElementById('search-input');
+
+const sortSelect =
+  document.getElementById('sort-select');
+
+
+let currentCat = 'todos';
+
+let currentSearch = '';
+
+let currentSort = 'relevancia';
+
+let cart = [];
+
+
+/* =========================================
+   FILTRADO
+========================================= */
+
+function getFiltered(){
+
+  let list =
+    currentCat === 'todos'
+      ? services.slice()
+      : services.filter(
+          service =>
+            service.cat === currentCat
+        );
+
+
+  if(currentSearch.trim()){
+
+    const query =
+      currentSearch.trim().toLowerCase();
+
+    list =
+      list.filter(service => {
+
+        const vendor =
+          vendors[service.vendorKey];
+
+        return (
+
+          service.name
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          service.desc
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          service.cat
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          vendor.name
+            .toLowerCase()
+            .includes(query)
+
+        );
+
+      });
+
+  }
+
+
+  if(currentSort === 'precio-asc'){
+
+    list.sort(
+      (a,b)=>
+        a.price-b.price
+    );
+
+  }
+
+
+  if(currentSort === 'precio-desc'){
+
+    list.sort(
+      (a,b)=>
+        b.price-a.price
+    );
+
+  }
+
+
+  if(currentSort === 'calificacion'){
+
+    list.sort(
+      (a,b)=>
+        vendors[b.vendorKey].rating -
+        vendors[a.vendorKey].rating
+    );
+
+  }
+
+
+  return list;
+
+}
+
+
+/* =========================================
+   RENDERIZAR CATÁLOGO
+========================================= */
+
+function render(){
+
+  const list =
+    getFiltered();
+
+
+  const providerCount =
+    new Set(
+      list.map(
+        service =>
+          service.vendorKey
+      )
+    ).size;
+
+
+  resultsCount.textContent =
+    `${list.length} servicio${list.length === 1 ? '' : 's'} de ${providerCount} proveedor${providerCount === 1 ? '' : 'es'}`;
+
+
+  if(list.length === 0){
+
+    grid.style.display='none';
+
+    emptyState.style.display='block';
+
+    return;
+
+  }
+
+
+  grid.style.display='grid';
+
+  emptyState.style.display='none';
+
+
+  grid.innerHTML =
+    list.map(service => {
+
+      const vendor =
+        vendors[service.vendorKey];
+
+      const inCart =
+        cart.includes(service.id);
+
+
+      return `
+
+        <div class="card">
+
+          <div class="card-top">
+
+            <button
+              class="vendor mono"
+              data-vendor="${service.vendorKey}"
+              type="button"
+              aria-label="Ver perfil de ${vendor.name}"
+            >
+              ${vendor.code} · ${vendor.name}
+            </button>
+
+            <span
+              class="verified"
+              aria-label="Proveedor verificado"
+            >
+              ✓ verificado
+            </span>
+
+          </div>
+
+
+          <h3>
+            ${service.name}
+          </h3>
+
+
+          <p>
+            ${service.desc}
+          </p>
+
+
+          <div class="card-foot">
+
+            <div class="price">
+
+              $${service.price.toFixed(2)}
+
+              <span>
+                ${service.unit}
+              </span>
+
+            </div>
+
+
+            <button
+              class="add-btn ${inCart ? 'added' : ''}"
+              data-id="${service.id}"
+              type="button"
+              aria-label="${inCart ? 'Quitar' : 'Agregar'} ${service.name} ${inCart ? 'del carrito' : 'al carrito'}"
+              aria-pressed="${inCart}"
+            >
+
+              ${inCart ? 'Agregado ✓' : 'Agregar'}
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+
+  /* BOTONES AGREGAR */
+
+  grid
+    .querySelectorAll('.add-btn')
+    .forEach(button => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          const id =
+            Number(button.dataset.id);
+
+          toggleCart(id);
+
+          render();
+
+        }
+      );
+
+    });
+
+
+  /* PROVEEDORES */
+
+  grid
+    .querySelectorAll('.vendor')
+    .forEach(button => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          openVendor(
+            button.dataset.vendor
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================
+   CARRITO
+========================================= */
+
+function toggleCart(id){
+
+  const index =
+    cart.indexOf(id);
+
+
+  if(index === -1){
+
+    cart.push(id);
+
+  }else{
+
+    cart.splice(index,1);
+
+  }
+
+
+  updateCartCount();
+
+}
+
+
+function updateCartCount(){
+
+  cartCountEl.textContent =
+    cart.length;
+
+}
+
+
+/* =========================================
+   MODAL CARRITO
+========================================= */
+
+const cartOverlay =
+  document.getElementById(
+    'cart-overlay'
+  );
+
+const cartBody =
+  document.getElementById(
+    'cart-body'
+  );
+
+
+function openCart(){
+
+  renderCart();
+
+  cartOverlay.classList.add(
+    'open'
+  );
+
+  cartOverlay.setAttribute(
+    'aria-hidden',
+    'false'
+  );
+
+}
+
+
+function renderCart(){
+
+  if(cart.length === 0){
+
+    cartBody.innerHTML = `
+
+      <p class="cart-empty">
+
+        Tu carrito está vacío.
+        Explora el catálogo y agrega un servicio.
+
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+
+  const items =
+    cart
+      .map(id =>
+        services.find(
+          service =>
+            service.id === id
+        )
+      )
+      .filter(Boolean);
+
+
+  const subtotal =
+    items.reduce(
+      (total,service) =>
+        total + service.price,
+      0
+    );
+
+
+  const itbms =
+    subtotal * 0.07;
+
+
+  const total =
+    subtotal + itbms;
+
+
+  cartBody.innerHTML =
+
+    items.map(service => `
+
+      <div class="cart-item">
+
+        <div>
+
+          <p class="cart-item-name">
+            ${service.name}
+          </p>
+
+          <span class="cart-item-vendor">
+
+            ${vendors[service.vendorKey].code}
+            ·
+            ${vendors[service.vendorKey].name}
+
+          </span>
+
+          <br>
+
+          <button
+            class="cart-remove"
+            data-id="${service.id}"
+            type="button"
+            aria-label="Eliminar ${service.name} del carrito"
+          >
+            Quitar
+          </button>
+
+        </div>
+
+
+        <div class="cart-item-price">
+
+          $${service.price.toFixed(2)}
+
+        </div>
+
+      </div>
+
+    `).join('')
+
+
+    + `
+
+      <div class="cart-summary">
+
+        <div class="cart-summary-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <span>
+            $${subtotal.toFixed(2)}
+          </span>
+
+        </div>
+
+
+        <div class="cart-summary-row">
+
+          <span>
+            ITBMS (7%)
+          </span>
+
+          <span>
+            $${itbms.toFixed(2)}
+          </span>
+
+        </div>
+
+
+        <div class="cart-summary-row total">
+
+          <span>
+            Total
+          </span>
+
+          <span>
+            $${total.toFixed(2)}
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+  cartBody
+    .querySelectorAll('.cart-remove')
+    .forEach(button => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          const id =
+            Number(button.dataset.id);
+
+          toggleCart(id);
+
+          renderCart();
+
+          render();
+
+        }
+      );
+
+    });
+
+}
+
+
+/* ABRIR CARRITO */
+
+document
+  .getElementById('cart-btn')
+  .addEventListener(
+    'click',
+    openCart
+  );
+
+
+/* CERRAR CARRITO */
+
+document
+  .getElementById('cart-close')
+  .addEventListener(
+    'click',
+    () => {
+
+      cartOverlay.classList.remove(
+        'open'
+      );
+
+      cartOverlay.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+    }
+  );
+
+
+cartOverlay.addEventListener(
+  'click',
+  event => {
+
+    if(event.target === cartOverlay){
+
+      cartOverlay.classList.remove(
+        'open'
+      );
+
+      cartOverlay.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   CATEGORÍAS
+========================================= */
+
+document
+  .querySelectorAll('.cat-btn')
+  .forEach(button => {
+
+    button.addEventListener(
+      'click',
+      () => {
+
+        document
+          .querySelectorAll('.cat-btn')
+          .forEach(btn => {
+
+            btn.classList.remove(
+              'active'
+            );
+
+            btn.setAttribute(
+              'aria-pressed',
+              'false'
+            );
+
+          });
+
+
+        button.classList.add(
+          'active'
+        );
+
+        button.setAttribute(
+          'aria-pressed',
+          'true'
+        );
+
+
+        currentCat =
+          button.dataset.cat;
+
+
+        render();
+
+      }
+    );
+
+  });
+
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+searchInput.addEventListener(
+  'input',
+  event => {
+
+    currentSearch =
+      event.target.value;
+
+    render();
+
+  }
+);
+
+
+/* =========================================
+   ORDENAMIENTO
+========================================= */
+
+sortSelect.addEventListener(
+  'change',
+  event => {
+
+    currentSort =
+      event.target.value;
+
+    render();
+
+  }
+);
+
+
+/* =========================================
+   PERFIL PROVEEDOR
+========================================= */
+
+const vendorOverlay =
+  document.getElementById(
+    'vendor-overlay'
+  );
+
+
+function openVendor(key){
+
+  const vendor =
+    vendors[key];
+
+
+  document
+    .getElementById('vendor-title')
+    .textContent =
+      vendor.name;
+
+
+  const fullStars =
+    Math.round(vendor.rating);
+
+
+  const emptyStars =
+    5 - fullStars;
+
+
+  document
+    .getElementById('vendor-body')
+    .innerHTML = `
+
+      <div
+        class="mono"
+        style="
+          color:var(--muted);
+          font-size:12px;
+        "
+      >
+        ${vendor.code}
+      </div>
+
+
+      <div class="vendor-rating">
+
+        ${'★'.repeat(fullStars)}
+        ${'☆'.repeat(emptyStars)}
+
+        ${vendor.rating.toFixed(1)}
+
+      </div>
+
+
+      <p
+        style="
+          color:var(--muted);
+          font-size:14px;
+        "
+      >
+
+        ${vendor.desc}
+
+      </p>
+
+
+      <div class="vendor-stats">
+
+        <div>
+
+          <b>
+            ${vendor.response}
+          </b>
+
+          tiempo promedio de respuesta
+
+        </div>
+
+
+        <div>
+
+          <b>
+            ${vendor.count}
+          </b>
+
+          servicio${vendor.count === 1 ? '' : 's'}
+          ofrecido${vendor.count === 1 ? '' : 's'}
+
+        </div>
+
+
+        <div>
+
+          <b>
+            ✓
+          </b>
+
+          verificado
+
+        </div>
+
+      </div>
+
+    `;
+
+
+  vendorOverlay.classList.add(
+    'open'
+  );
+
+  vendorOverlay.setAttribute(
+    'aria-hidden',
+    'false'
+  );
+
+}
+
+
+document
+  .getElementById('vendor-close')
+  .addEventListener(
+    'click',
+    () => {
+
+      vendorOverlay.classList.remove(
+        'open'
+      );
+
+      vendorOverlay.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+    }
+  );
+
+
+vendorOverlay.addEventListener(
+  'click',
+  event => {
+
+    if(event.target === vendorOverlay){
+
+      vendorOverlay.classList.remove(
+        'open'
+      );
+
+      vendorOverlay.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   FORMULARIO SOY PROVEEDOR
+========================================= */
+
+const providerOverlay =
+  document.getElementById(
+    'provider-overlay'
+  );
+
+const providerForm =
+  document.getElementById(
+    'provider-form'
+  );
+
+const providerSuccess =
+  document.getElementById(
+    'pf-success'
+  );
+
+
+/* ABRIR */
+
+document
+  .getElementById('provider-btn')
+  .addEventListener(
+    'click',
+    () => {
+
+      providerOverlay.classList.add(
+        'open'
+      );
+
+      providerOverlay.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+    }
+  );
+
+
+/* CERRAR */
+
+document
+  .getElementById('provider-close')
+  .addEventListener(
+    'click',
+    () => {
+
+      providerOverlay.classList.remove(
+        'open'
+      );
+
+      providerOverlay.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+    }
+  );
+
+
+providerOverlay.addEventListener(
+  'click',
+  event => {
+
+    if(event.target === providerOverlay){
+
+      providerOverlay.classList.remove(
+        'open'
+      );
+
+      providerOverlay.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+    }
+
+  }
+);
+
+
+/* VALIDAR FORMULARIO */
+
+providerForm.addEventListener(
+  'submit',
+  event => {
+
+    event.preventDefault();
+
+
+    if(!providerForm.checkValidity()){
+
+      providerForm.reportValidity();
+
+      return;
+
+    }
+
+
+    providerSuccess.style.display =
+      'flex';
+
+
+    providerForm
+      .querySelectorAll(
+        'input, textarea, button[type="submit"]'
+      )
+      .forEach(element => {
+
+        element.disabled = true;
+
+      });
+
+  }
+);
+
+
+/* =========================================
+   ESCAPE PARA CERRAR
+========================================= */
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if(event.key !== 'Escape'){
+      return;
+    }
+
+
+    cartOverlay.classList.remove(
+      'open'
+    );
+
+    vendorOverlay.classList.remove(
+      'open'
+    );
+
+    providerOverlay.classList.remove(
+      'open'
+    );
+
+
+    cartOverlay.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    vendorOverlay.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    providerOverlay.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+);
+
+
+/* =========================================
+   INICIAR
+========================================= */
+
+render();
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>
